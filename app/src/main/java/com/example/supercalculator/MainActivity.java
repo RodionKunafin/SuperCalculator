@@ -125,6 +125,10 @@ public class MainActivity extends AppCompatActivity {
                 case "%":
                     operand%=number;
                     break;
+                case "C":
+                    resultField.setText("0");
+                case "+/-":
+                    operand = number*(-1);
 
             }
         }
