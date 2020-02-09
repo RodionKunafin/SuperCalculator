@@ -8,12 +8,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 public class MainActivity extends AppCompatActivity {
     TextView resultField;
     EditText numberField;
     TextView operationField;
     Double operand = null;
     String lastOperation = "=";
+    Button btnC;
+    Button btnChangeOfSign;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,8 +28,8 @@ public class MainActivity extends AppCompatActivity {
         numberField = (EditText) findViewById(R.id.numberField);
         operationField = (TextView) findViewById(R.id.operationField);
 
-        Button btnC = findViewById(R.id.btnC);
-        Button btnChangeOfSign = findViewById(R.id.btnChangeOfSign);
+        btnC = findViewById(R.id.btnC);
+        btnChangeOfSign = findViewById(R.id.btnChangeOfSign);
         Button btnPercent = findViewById(R.id.btnPercent);
         Button btnDivision = findViewById(R.id.btnDivision);
         Button btn7 = findViewById(R.id.btn7);
@@ -103,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case "/":
                     if(number==0){
-                        operand =0.0;
+                        break;
                     }
                     else{
                         operand /=number;
@@ -118,9 +122,15 @@ public class MainActivity extends AppCompatActivity {
                 case "-":
                     operand -=number;
                     break;
+                case "%":
+                    operand%=number;
+                    break;
+
             }
         }
         resultField.setText(operand.toString().replace('.', ','));
         numberField.setText("");
     }
+
+
 }
